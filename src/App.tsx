@@ -1,7 +1,7 @@
 import {StyleSheet, View} from 'react-native';
 
 import React from 'react';
-import Reels from './Shorts';
+import Shorts from './Shorts';
 
 type Item = {
   id: string;
@@ -54,7 +54,7 @@ const items: Item[] = [
 const App = () => {
   return (
     <View style={styles.container}>
-      <Reels items={items} />
+      <Shorts items={items} />
     </View>
   );
 };

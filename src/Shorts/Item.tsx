@@ -24,7 +24,7 @@ export const getYoutubeIdFromURL = (url: string): string | undefined => {
   return youtubeId;
 };
 
-type ReelItemProps = {
+type ShortItemProps = {
   index: number;
   visible: boolean;
   playing: boolean;
@@ -33,7 +33,7 @@ type ReelItemProps = {
   layout: LayoutRectangle;
 };
 
-function ReelItem({visible, playing, url, layout}: ReelItemProps) {
+function ShortItem({visible, playing, url, layout}: ShortItemProps) {
   const youtubeId = getYoutubeIdFromURL(url);
   const youtubePlayerRef = useRef<YoutubeIframeRef>(null);
 
@@ -60,4 +60,4 @@ function ReelItem({visible, playing, url, layout}: ReelItemProps) {
   );
 }
 
-export default ReelItem;
+export default ShortItem;

@@ -7,12 +7,12 @@ import {
 } from 'react-native';
 import React, {memo, useCallback, useRef, useState} from 'react';
 
-import ReelItem from './Item';
+import ShortItem from './Item';
 import uuid from 'react-native-uuid';
 
 type Item<T> = T & {url: string};
 
-export type ReelsProps<T> = {
+export type ShortsProps<T> = {
   items: Item<T>[];
   onLoadNextRequired?: () => void;
   onEndReached?: ((info: {distanceFromEnd: number}) => void) | null | undefined;
@@ -25,7 +25,7 @@ const viewabilityConfig = {
   viewAreaCoveragePercentThreshold: 50,
 };
 
-function Reels<T>(props: ReelsProps<T>): JSX.Element {
+function Shorts<T>(props: ShortsProps<T>): JSX.Element {
   const flatListRef = useRef<FlatList>(null);
   const {items, onEndReached, onRefresh} = props;
   const [visibleIndex, setVisibleIndex] = useState(0);
@@ -63,7 +63,7 @@ function Reels<T>(props: ReelsProps<T>): JSX.Element {
         renderItem={useCallback(
           ({item, index}: {item: Item<T>; index: number}) => {
             return (
-              <ReelItem
+              <ShortItem
                 index={index}
                 url={item.url}
                 paused={index !== visibleIndex}
@@ -87,4 +87,4 @@ const styles = StyleSheet.create({
   container: {flex: 1, alignSelf: 'stretch'},
 });
 
-export default memo(Reels);
+export default memo(Shorts);
